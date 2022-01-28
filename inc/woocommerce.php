@@ -18,48 +18,27 @@
  */
 function alterego_woocommerce_setup() {
 	add_theme_support(
-		'woocommerce',
-		array(
-			'thumbnail_image_width' => 150,
-			'single_image_width'    => 300,
-			'product_grid'          => array(
-				'default_rows'    => 3,
-				'min_rows'        => 1,
-				'default_columns' => 4,
-				'min_columns'     => 1,
-				'max_columns'     => 6,
-			),
-		)
+		'woocommerce'
+		// ,
+		// array(
+		// 	'thumbnail_image_width' => 150,
+		// 	'single_image_width'    => 300,
+		// 	'product_grid'          => array(
+		// 		'default_rows'    => 3,
+		// 		'min_rows'        => 1,
+		// 		'default_columns' => 4,
+		// 		'min_columns'     => 1,
+		// 		'max_columns'     => 6,
+		// 	),
+		// )
 	);
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
+	// add_theme_support( 'wc-product-gallery-zoom' );
+	// add_theme_support( 'wc-product-gallery-lightbox' );
+	// add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'alterego_woocommerce_setup' );
 
-/**
- * WooCommerce specific scripts & stylesheets.
- *
- * @return void
- */
-function alterego_woocommerce_scripts() {
-	wp_enqueue_style( 'alterego-woocommerce-style', get_template_directory_uri() . '/woocommerce.css', array(), _S_VERSION );
 
-	$font_path   = WC()->plugin_url() . '/assets/fonts/';
-	$inline_font = '@font-face {
-			font-family: "star";
-			src: url("' . $font_path . 'star.eot");
-			src: url("' . $font_path . 'star.eot?#iefix") format("embedded-opentype"),
-				url("' . $font_path . 'star.woff") format("woff"),
-				url("' . $font_path . 'star.ttf") format("truetype"),
-				url("' . $font_path . 'star.svg#star") format("svg");
-			font-weight: normal;
-			font-style: normal;
-		}';
-
-	wp_add_inline_style( 'alterego-woocommerce-style', $inline_font );
-}
-add_action( 'wp_enqueue_scripts', 'alterego_woocommerce_scripts' );
 
 /**
  * Disable the default WooCommerce stylesheet.
@@ -118,8 +97,8 @@ if ( ! function_exists( 'alterego_woocommerce_wrapper_before' ) ) {
 	 */
 	function alterego_woocommerce_wrapper_before() {
 		?>
-			<main id="primary" class="site-main">
-		<?php
+<main id="primary" class="site-main">
+    <?php
 	}
 }
 add_action( 'woocommerce_before_main_content', 'alterego_woocommerce_wrapper_before' );
@@ -134,8 +113,8 @@ if ( ! function_exists( 'alterego_woocommerce_wrapper_after' ) ) {
 	 */
 	function alterego_woocommerce_wrapper_after() {
 		?>
-			</main><!-- #main -->
-		<?php
+</main><!-- #main -->
+<?php
 	}
 }
 add_action( 'woocommerce_after_main_content', 'alterego_woocommerce_wrapper_after' );
@@ -150,48 +129,50 @@ add_action( 'woocommerce_after_main_content', 'alterego_woocommerce_wrapper_afte
 			alterego_woocommerce_header_cart();
 		}
 	?>
- */
+*/
 
 if ( ! function_exists( 'alterego_woocommerce_cart_link_fragment' ) ) {
-	/**
-	 * Cart Fragments.
-	 *
-	 * Ensure cart contents update when products are added to the cart via AJAX.
-	 *
-	 * @param array $fragments Fragments to refresh via AJAX.
-	 * @return array Fragments to refresh via AJAX.
-	 */
-	function alterego_woocommerce_cart_link_fragment( $fragments ) {
-		ob_start();
-		alterego_woocommerce_cart_link();
-		$fragments['a.cart-contents'] = ob_get_clean();
+/**
+* Cart Fragments.
+*
+* Ensure cart contents update when products are added to the cart via AJAX.
+*
+* @param array $fragments Fragments to refresh via AJAX.
+* @return array Fragments to refresh via AJAX.
+*/
+function alterego_woocommerce_cart_link_fragment( $fragments ) {
+ob_start();
+alterego_woocommerce_cart_link();
+$fragments['a.cart-contents'] = ob_get_clean();
 
-		return $fragments;
-	}
+return $fragments;
+}
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'alterego_woocommerce_cart_link_fragment' );
 
 if ( ! function_exists( 'alterego_woocommerce_cart_link' ) ) {
-	/**
-	 * Cart Link.
-	 *
-	 * Displayed a link to the cart including the number of items present and the cart total.
-	 *
-	 * @return void
-	 */
-	function alterego_woocommerce_cart_link() {
-		?>
-		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'alterego' ); ?>">
-			<?php
+/**
+* Cart Link.
+*
+* Displayed a link to the cart including the number of items present and the cart total.
+*
+* @return void
+*/
+function alterego_woocommerce_cart_link() {
+?>
+<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>"
+    title="<?php esc_attr_e( 'View your shopping cart', 'alterego' ); ?>">
+    <?php
 			$item_count_text = sprintf(
 				/* translators: number of items in the mini cart. */
 				_n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'alterego' ),
 				WC()->cart->get_cart_contents_count()
 			);
 			?>
-			<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo esc_html( $item_count_text ); ?></span>
-		</a>
-		<?php
+    <span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span
+        class="count"><?php echo esc_html( $item_count_text ); ?></span>
+</a>
+<?php
 	}
 }
 
@@ -208,20 +189,80 @@ if ( ! function_exists( 'alterego_woocommerce_header_cart' ) ) {
 			$class = '';
 		}
 		?>
-		<ul id="site-header-cart" class="site-header-cart">
-			<li class="<?php echo esc_attr( $class ); ?>">
-				<?php alterego_woocommerce_cart_link(); ?>
-			</li>
-			<li>
-				<?php
+<ul id="site-header-cart" class="site-header-cart">
+    <li class="<?php echo esc_attr( $class ); ?>">
+        <?php alterego_woocommerce_cart_link(); ?>
+    </li>
+    <li>
+        <?php
 				$instance = array(
 					'title' => '',
 				);
 
 				the_widget( 'WC_Widget_Cart', $instance );
 				?>
-			</li>
-		</ul>
-		<?php
+    </li>
+</ul>
+<?php
 	}
 }
+// this function is going to find us the current category
+function get_category_id() {
+$category = get_queried_object();
+return $category -> term_id;
+}
+
+function category_header_background() {
+	// get the category id using our function above
+	$term_id = get_category_id();
+	// get custom field for our background color 
+	$bg_color = get_field('background_color', 'product_cat_'.$term_id);
+	// get the product category 
+	echo 'background-color: ' . $bg_color;
+}
+
+// hook that remove sidebar from all our templates
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+// hook that removes add to cart button from our loop products
+remove_action('woocommerce_after_shop_loop_item','woocommerce_template_loop_add_to_cart', 10 );
+// use filter to return full sized image
+// for product acrhive images (rather than the low res version)
+add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
+	return 'full';
+  } );
+
+// remove breadcrumbs on the acrhive category page
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
+// remove result count, ordering & notives
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+remove_action('woocommerce_before_shop_loop', 'wc_print_notices', 10);
+
+// a function that gets the image of a category
+function get_category_image($term) {
+	// run the get the category id function
+	$category_id = get_category_id();
+	// check if we have have a category id
+	if (empty($category_id)) {
+	  $category = get_term_by( 'slug', $term, 'product_cat' );
+	  $category_id = $category->term_id;
+	}
+	// get the thumbnail id using the category_id
+	$thumbnail_id = get_woocommerce_term_meta( $category_id, 'thumbnail_id', true ); 
+	echo wp_get_attachment_url( $thumbnail_id ); 
+  }
+
+  // remove the product extra info
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+// remove the related products inside our product loop
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+// remove the additonal info tabs
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+
+// function for getting the custom background color on headers
+function single_header_background() {
+	$post_id->ID;
+	$bg_color = get_field('background_color', $post_id);
+	echo 'background-color: ' . $bg_color;
+  }

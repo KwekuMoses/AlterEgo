@@ -139,13 +139,16 @@ add_action( 'widgets_init', 'alterego_widgets_init' );
  */
 function alterego_scripts() {
 	wp_enqueue_style( 'alterego-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+	// Load in your scripts from the two created files
+	wp_enqueue_style('alterego-tachyons', get_template_directory_uri() . '/css/tachyons.css');
+	wp_enqueue_style('alterego-custom', get_template_directory_uri() . '/css/custom.css');
+	wp_enqueue_style('alterego-custom', get_template_directory_uri() . '/css/fonts/fonts.css');
+
 	wp_style_add_data( 'alterego-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'alterego-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script('alterego-marquee', get_template_directory_uri() . '/js/marquee.js');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'alterego_scripts' );
 
