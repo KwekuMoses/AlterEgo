@@ -37,6 +37,8 @@ get_header( 'shop' ); ?>
 
 
 </header>
+<?php get_template_part('template-parts/related-products'); ?>
+
 <?php
 		/**
 		 * woocommerce_sidebar hook.
