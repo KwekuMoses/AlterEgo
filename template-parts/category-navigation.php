@@ -1,11 +1,10 @@
-   <!-- here we'll have a link with our logo that goes back to the homepage -->
+<!-- Push the items to the end vertically using flexbox and convert them into columns -->
+<nav id="site-navigation" class="main-navigation flex-l flex-auto flex-column justify-between relative pa3 ma4-l">
 
-   <nav id="site-navigation" class="main-navigation flex flex-auto items-end relative">
-
-       <a href="<?php echo get_site_url(); ?>" class="absolute top-0 left-0">
-           <img src="<?php echo get_template_directory_uri() . '/images/alter-ego-logo.svg'; ?>" class="db">
-       </a>
-       <?php
+    <a href="<?php echo get_site_url(); ?>" class="db mb3 logo">
+        <img src="<?php echo get_template_directory_uri() . '/images/alter-ego-logo.svg'; ?>" class="db">
+    </a>
+    <?php
 wp_nav_menu(
 array(
     'theme_location' => 'menu-1',
@@ -14,4 +13,4 @@ array(
 )
 );
 ?>
-   </nav><!-- #site-navigation -->
+</nav><!-- #site-navigation -->

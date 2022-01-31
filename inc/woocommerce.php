@@ -237,10 +237,13 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 // remove result count, ordering & notives
 remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+// remove notices because we want to display them elsewhere
 remove_action('woocommerce_before_shop_loop', 'wc_print_notices', 10);
+remove_action('woocommerce_before_single_product', 'wc_print_notices', 10);
+ 
 
 // a function that gets the image of a category
-function get_category_image($term) {
+function get_category_image	($term) {
 	// run the get the category id function
 	$category_id = get_category_id();
 	// check if we have have a category id
@@ -252,13 +255,13 @@ function get_category_image($term) {
 	$thumbnail_id = get_woocommerce_term_meta( $category_id, 'thumbnail_id', true ); 
 	echo wp_get_attachment_url( $thumbnail_id ); 
   }
-
-  // remove the product extra info
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-// remove the related products inside our product loop
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-// remove the additonal info tabs
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+ // remove the product extra info
+ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+ // remove the related products inside our product loop
+ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+ // remove the additonal info tabs
+ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+ 
 
 // function for getting the custom background color on headers
 function single_header_background() {

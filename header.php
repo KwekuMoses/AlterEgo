@@ -25,6 +25,15 @@
     <?php wp_body_open(); ?>
     <div id="page" class="site">
 
+        <!-- firstly check to see if there are any notices, if there are display them  -->
+
+        <?php if (wc_notice_count()) : ?>
+
+        <!-- here we print out oour notices -->
+        <div class="pa3 tc">
+            <?php wc_print_notices(); ?>
+        </div>
+        <?php endif; ?>
 
         <a class="skip-link screen-reader-text"
             href="#primary"><?php esc_html_e( 'Skip to content', 'alterego' ); ?></a>
@@ -34,7 +43,7 @@
         <?php if(is_home() or is_product_category()) : ?>
 
         <!-- here we grab the custom field from our category adn display the color and inline style -->
-        <header id="masthead" class="site-header flex" style="<?php echo category_header_background(); ?>">
+        <header id="masthead" class="site-header flex-ns" style="<?php echo category_header_background(); ?>">
             <?php get_template_part('template-parts/category-navigation')?>
             <?php get_template_part('template-parts/featured-image')?>
         </header><!-- #masthead -->

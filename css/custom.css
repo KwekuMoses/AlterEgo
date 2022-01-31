@@ -9,13 +9,10 @@ body {
   background-color: #fb7915;
 }
 
-.main-navigation {
-  margin: 32px 0 48px 64px;
-}
-
 .main-menu a {
   display: block;
-  font-size: 32px;
+  /* here we make our navigation text 20px by default  */
+  font-size: 20px;
   text-decoration: none;
   color: #fff;
   line-height: 1.5;
@@ -30,7 +27,7 @@ body {
 }
 
 .logo {
-  width: 330px;
+  max-width: 330px;
 }
 
 .products {
@@ -139,4 +136,22 @@ body {
 .single-product .summary {
   max-width: 390px;
   padding-left: 64px;
+}
+
+/* write some basic styles for our static pages */
+
+.page-content {
+  max-width: 1220px;
+}
+
+.header-page {
+  background-color: #fbbb28;
+  padding: 32px 64px;
+  margin-bottom: 64px;
+}
+
+@media screen and (min-width: 60em) {
+  .main-menu a {
+    font-size: 32px;
+  }
 }

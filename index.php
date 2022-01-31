@@ -14,12 +14,20 @@
 
 get_header();
 ?>
+<div id="primary" class="content-area">
+    <main id="primary" class="site-main">
+        <!-- here we have our scrolling banner text -->
+        <h1 class="woocommerce-products-header__title page-title">
+            <span class="marquee">
+                New Arrivals
+            </span>
+        </h1>
 
-<main id="primary" class="site-main">
 
-    <!-- In here we want too display featured products -->
-    <ul class="products">
-        <?php
+        <!-- In here we want to display featured products -->
+
+        <ul class="products">
+            <?php
     $args = array(
       'post_type' => 'product',
       'posts_per_page' => 3,
@@ -41,9 +49,10 @@ get_header();
     }
     wp_reset_postdata();
   ?>
-    </ul>
-    <!--/.products-->
-</main><!-- #main -->
+        </ul>
+        <!--/.products-->
+    </main><!-- #main -->
+</div><!-- #primary -->
 
 <?php
 get_footer();
