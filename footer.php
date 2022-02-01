@@ -11,8 +11,26 @@
 
 ?>
 
-<footer id="colophon" class="site-footer">
-
+<footer id="colophon" class="site-footer flex justify-between regular pv4 ph3">
+    <!-- here we add our navigations that we registered via our functions.php and we can now manage these through the dashboard -->
+    <?php
+    wp_nav_menu(
+    array(
+        'theme_location' => 'main-footer',
+        'menu_id'        => 'footer-menu',
+        'menu_class'	=> 'footer-menu list flex pa0 ma0'
+    )
+    );
+    ?>
+    <?php
+    wp_nav_menu(
+    array(
+        'theme_location' => 'social-footer',
+        'menu_id'        => 'social-menu',
+        'menu_class'	=> 'footer-menu list flex pa0 ma0'
+    )
+    );
+    ?>
 </footer><!-- #colophon -->
 </div><!-- #page -->
 

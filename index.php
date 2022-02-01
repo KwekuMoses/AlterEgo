@@ -31,6 +31,8 @@ get_header();
     $args = array(
       'post_type' => 'product',
       'posts_per_page' => 3,
+      'orderby' => 'menu_order',
+      'order'=> 'ASC',
       'tax_query' => array(
         array(
           'taxonomy' => 'product_visibility',
@@ -39,6 +41,7 @@ get_header();
         ),
       ),
     );
+    
     $loop = new WP_Query( $args );
     if ( $loop->have_posts() ) {
       while ( $loop->have_posts() ) : $loop->the_post();

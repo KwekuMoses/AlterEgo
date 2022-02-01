@@ -50,6 +50,9 @@ function alterego_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'alterego' ),
+			'main-footer' => esc_html__( 'Footer', 'alterego' ),
+			'social-footer' => esc_html__( 'Social', 'alterego' ),
+			'menu-4' => esc_html__( 'This shows here', 'just testing' ),
 		)
 	);
 

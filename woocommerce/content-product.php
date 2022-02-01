@@ -25,7 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 <!-- add custom background color to our products -->
-<li <?php wc_product_class( 'w-third relative', $product );?>
+<li <?php wc_product_class( 'w-third-ns relative', $product );?>
     style="background-color:<?php the_field('background_color'); ?>">
     <?php
 	/**
@@ -42,6 +42,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item_title' ); 
+
 	
 	?>
 

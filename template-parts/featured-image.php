@@ -1,4 +1,5 @@
-<div class="site-branding">
+<!-- here we apply a width of 50% when the screen is between 30em and 60em -->
+<div class="site-branding w-50-m">
     <!-- get_category_image function will find the current category, and if it doesnt it will return the homepage image -->
     <img src="<?php get_category_image('home'); ?>" class="db featured-image">
 </div><!-- .site-branding -->
