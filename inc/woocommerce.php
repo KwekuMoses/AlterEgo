@@ -221,6 +221,13 @@ function category_header_background() {
 	echo 'background-color: ' . $bg_color;
 }
 
+function front_page_video() {
+	// get custom field for our background color 
+	$video = get_field('video_link', 6);
+	// get the product category 
+	echo $video;
+}
+
 // hook that remove sidebar from all our templates
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 // hook that removes add to cart button from our loop products
@@ -279,4 +286,10 @@ remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_pro
 function cart_url() {
 	global $woocommerce;
 	echo $woocommerce->cart->get_cart_url();
+  }
+
+  // here we get our product background color
+function cart_background_color($post_id) {
+	$bg_color = get_field('background_color', $post_id);
+	echo 'background-color:' . $bg_color;
   }

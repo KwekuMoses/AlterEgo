@@ -30,8 +30,9 @@
     </div><!-- .entry-content -->
 
     <?php if ( get_edit_post_link() ) : ?>
+    //Todo: remove?
     <footer class="entry-footer">
-        <?php
+        <!-- <?php
 			edit_post_link(
 				sprintf(
 					wp_kses(
@@ -48,7 +49,7 @@
 				'<span class="edit-link">',
 				'</span>'
 			);
-			?>
+			?> -->
     </footer><!-- .entry-footer -->
     <?php endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
