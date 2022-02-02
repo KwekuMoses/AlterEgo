@@ -38,7 +38,9 @@ body {
   flex-wrap: wrap;
 }
 
-.product a {
+/* here we only style up products in the product loop */
+
+.products .product a {
   display: block;
   padding: 32px;
   text-decoration: none;
@@ -168,6 +170,12 @@ body {
 
 .price ins {
   text-decoration: none;
+}
+
+/* styles for our search + cart box */
+.search-meta {
+  top: 3rem;
+  right: 3rem;
 }
 
 @media screen and (min-width: 60em) {
