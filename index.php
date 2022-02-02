@@ -54,6 +54,13 @@ get_header();
   ?>
         </ul>
         <!--/.products-->
+
+        <div class="home-video">
+            <!-- in here goes the video that loops and autoplays -->
+            <video src="<?php echo get_template_directory_uri() . './images/alter-ego-video-SD.mp4'?>"
+                class='db w-100 h-auto' muted autoplay loop></video>
+        </div>
+
     </main><!-- #main -->
 </div><!-- #primary -->
 
