@@ -37,7 +37,8 @@ input[type="number"] {
 }
 
 .site-header {
-  background-color: #fb7915;
+  /* background-color: #fb7915; */
+  background-color: black;
 }
 
 .home .main-navigation,
@@ -144,7 +145,10 @@ input[type="number"] {
   animation: marquee 2s linear infinite;
 }
 
-.menu-item {
+.menu-item-47,
+.menu-item-45,
+.menu-item-46,
+.menu-item-44 {
   /*For Gsap*/
   opacity: 0;
 }
