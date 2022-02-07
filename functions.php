@@ -145,8 +145,8 @@ function alterego_scripts() {
 
 	// Load in your scripts from the two created files
 	wp_enqueue_style('alterego-tachyons', get_template_directory_uri() . '/css/tachyons.css');
+	wp_enqueue_style('alterego-fonts', get_template_directory_uri() . '/css/fonts.css');
 	wp_enqueue_style('alterego-custom', get_template_directory_uri() . '/css/custom.css');
-	wp_enqueue_style('alterego-custom', get_template_directory_uri() . '/css/fonts/fonts.css');
 
 	wp_style_add_data( 'alterego-style', 'rtl', 'replace' );
 
