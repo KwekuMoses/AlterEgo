@@ -5,13 +5,46 @@ body {
   color: #000;
 }
 
+body,
+input,
+select,
+textarea {
+  /* smooth font edges so they are less jagged */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* this removes the default blue outline when the elements are clicked on (chrome) */
+input,
+button {
+  outline: none;
+}
+
 a {
   color: #000;
   text-decoration: none;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .site-header {
   background-color: #fb7915;
+}
+
+.home .main-navigation,
+.archive .main-navigation {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
 }
 
 .main-menu a {
@@ -111,6 +144,11 @@ a {
   animation: marquee 2s linear infinite;
 }
 
+.menu-item {
+  /*For Gsap*/
+  opacity: 0;
+}
+
 /* 
    1. when we hover over our navigation, fade out all the links
    2. for the particular link that we're hover on, keep it faded in
@@ -130,12 +168,6 @@ a {
   opacity: 1;
 }
 
-/* style the product page */
-.single-product .product {
-  display: flex;
-  padding: 32px;
-}
-
 /* stretch image to fill available space */
 .woocommerce-product-gallery {
   flex: auto;
@@ -143,7 +175,6 @@ a {
 
 .single-product .summary {
   max-width: 390px;
-  padding-left: 64px;
 }
 
 /* write some basic styles for our static pages */
@@ -154,8 +185,6 @@ a {
 
 .header-page {
   background-color: #fbbb28;
-  padding: 32px 64px;
-  margin-bottom: 64px;
 }
 
 /* footer styles  */
@@ -178,17 +207,30 @@ a {
 }
 
 /* styles for our search + cart box */
-.search-meta {
-  top: 3rem;
-  right: 3rem;
+.site-branding .search-meta {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.summary .search-meta {
+  margin-bottom: 1rem;
+  justify-content: flex-end;
 }
 
 th,
 td {
-  padding: 1rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
 }
 
-td {
+th {
+  /* apply this to all table heading ( the align & justify to center by default ) */
+  text-align: left;
+  vertical-align: top;
+}
+
+.cart_item td {
   border-bottom: solid 1px #ccc;
 }
 
@@ -217,7 +259,343 @@ td {
 .product-thumbnail img {
   display: block;
   width: 100% !important;
-  height: auto;
+  height: auto !important;
+}
+
+/* trash icon  */
+.shop_table a {
+  text-decoration: none;
+  color: #000;
+}
+
+.product-remove img {
+  min-width: 16px;
+}
+
+.button {
+  display: inline-block;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.input-text,
+.wpforms-field input,
+.wpforms-field textarea {
+  height: 2rem;
+  padding: 0 0.5rem !important;
+  font-size: 1rem;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+/* cart totals element */
+
+.order-total {
+  background-color: #f2f2f2;
+}
+
+.wc-proceed-to-checkout .button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* proudct page styles */
+
+.summary .product_title {
+  color: #fff;
+  font-family: "lunchtype24expanded_medium", sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.summary .woocommerce-product-details__short-description {
+  color: #fff;
+  line-height: 1.333;
+  margin-bottom: 2rem;
+}
+
+.summary .p1 {
+  margin: 0;
+}
+
+.summary .price {
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.summary .button {
+  background-color: #fff;
+  color: #000;
+}
+
+.summary .quantity {
+  display: none !important;
+}
+
+/* product styles */
+.product .woocommerce-product-gallery__wrapper {
+  margin: 0;
+}
+
+/* product variations style */
+
+.variations_form,
+.variations tbody {
+  display: flex;
+}
+
+/* hiding the labels  */
+.variations label {
+  display: none;
+}
+/* overrriding the default td styles  */
+.variations .value {
+  display: block;
+  padding: 0;
+  padding-right: 0.25rem;
+}
+
+.variations select {
+  height: 32px;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+.reset-variations {
+  display: none;
+}
+
+.reset_variations {
+  display: none;
+}
+
+.single_variation_wrap {
+  display: grid;
+  align-items: end;
+}
+
+/* our styles for our flash message */
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-notice {
+  line-height: 2rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.woocommerce-message {
+  background-color: #c0d045;
+}
+
+.woocommerce-info {
+  background-color: #fbbb28;
+}
+
+.woocommerce-error {
+  background-color: #ff4141;
+}
+
+.flash-message .button {
+  background-color: transparent;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+/* style the checkout */
+.woocommerce-checkout .page-content,
+.static-page {
+  max-width: 580px;
+}
+
+.woocommerce-form-coupon-toggle {
+  margin-bottom: 1.5rem;
+}
+.woocommerce-form-coupon-toggle,
+.showcoupon {
+  color: #fff;
+}
+
+.form-row {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.form-row label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.woocommerce-input-wrapper {
+  display: block;
+}
+
+.woocommerce-input-wrapper input {
+  display: block;
+  width: 100%;
+}
+
+.woocommerce-checkout h3,
+.woocommerce-order-details h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.select2-container {
+  display: block;
+  font-size: 1rem;
+}
+
+.woocommerce-shipping-fields h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.woocommerce-input-wrapper textarea {
+  min-height: 6rem;
+  padding: 0.5rem !important;
+  width: 100%;
+  resize: vertical;
+}
+
+.woocommerce-checkout-review-order-table {
+  width: 100%;
+}
+
+.wc_payment_methods {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.wc_payment_methods label {
+  padding-left: 0 !important;
+}
+
+.woocommerce-checkout-review-order-table td,
+.woocommerece-checkout-review-order-table th {
+  /* border: none; */
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wc-stripe-elements-field {
+  border: solid 1px rgba(0, 0, 0, 0.2) !important;
+  padding: 0.5rem !important;
+  margin-bottom: 0 !important;
+  margin-top: 0.5rem !important;
+}
+
+.notes {
+  padding-top: 1rem;
+}
+
+.woocommerce-order-details h2 {
+  margin-top: 1.5rem;
+}
+
+.shipping ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+/* order confirmation page */
+.woocommerce-order-overview {
+  padding-left: 0;
+  list-style: none;
+  margin-top: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+/* footer styles  */
+.site-footer {
+  border-top: solid 1px rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+}
+
+/* Responsiveness */
+
+/* contact form styles  */
+
+.wpforms-error {
+  padding-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* styles that get applied only below 40em width */
+@media (max-width: 40em) {
+  .product-thumbnail {
+    display: none;
+  }
+  .input-text {
+    height: 30px;
+  }
+
+  .input-coupon {
+    max-width: 160px;
+  }
+
+  .coupon {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 40em) {
+  th,
+  td {
+    padding: 1rem;
+    /* equal to 16px */
+    font-size: 1rem;
+  }
+
+  /* make cart totals box have a narrower width  */
+  .cart_totals {
+    max-width: 360px;
+    min-width: 300px;
+  }
+  .actions-bar {
+    display: flex;
+  }
+  .button {
+    font-size: 1rem;
+  }
+  .site-footer {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 60em) {
@@ -227,5 +605,21 @@ td {
   .marquee {
     font-size: 32px;
     padding: 32px;
+  }
+  .summary .product_title {
+    font-size: 3rem;
+  }
+
+  .site-branding .search-meta {
+    right: 3rem;
+    top: 3rem;
+  }
+}
+
+@media (max-width: 30em) {
+  .summary .search-meta {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 }

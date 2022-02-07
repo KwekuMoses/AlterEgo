@@ -32,9 +32,20 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<!-- here we make a custom style for our button color 
+using the custom field from our product
+-->
+<style>
+.summary .button {
+    color: <?php the_field('background_color') ?> !important;
 
-    <?php get_template_part( 'template-parts/header-search');?>
+}
+</style>
+
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'flex-ns items-center ma4-l pa3', $product ); ?>>
+
+
+
 
     <?php
 	/**
@@ -47,7 +58,11 @@ if ( post_password_required() ) {
 	
 	?>
 
-    <div class="summary entry-summary">
+
+    <div class="summary entry-summary pl5-l">
+        <?php get_template_part( 'template-parts/header-search');?>
+
+
         <?php
 		/**
 		 * Hook: woocommerce_single_product_summary.

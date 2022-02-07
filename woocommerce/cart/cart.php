@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.4.0
+ * @version 3.8.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -24,7 +24,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
     <?php do_action( 'woocommerce_before_cart_table' ); ?>
 
-    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents w-100 mb4 mb5-l f5"
+    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents w-100 mb4 mb6-l mb5-l f5"
         cellspacing="0">
         <thead class="cart-heading">
             <tr>
