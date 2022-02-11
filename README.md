@@ -1,4 +1,4 @@
-# Pomodoro Taskmanager
+# Alterego Wordpress Theme
 
 A Wordpress/Woocommerce custom theme.
 
@@ -13,7 +13,7 @@ This theme was built using
 
 ## Current status 💭
 
-<span style="color:blue">Done</span>
+Done
 
 ## Authors 👤
 
