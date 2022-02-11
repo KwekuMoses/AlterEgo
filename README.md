@@ -7,10 +7,10 @@ A Wordpress/Woocommerce custom theme.
 Starter template by https://underscores.me/.
 This theme was built using
 
-    - Advanced Custom Fields
-    - Tachyons
-    - Gsap
-    - Stripe
+    > Advanced Custom Fields
+    > Tachyons
+    > Gsap
+    > Stripe
 
 ## Current status 💭
 
