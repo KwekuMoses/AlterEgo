@@ -1,1 +1,25 @@
-A theme Made by Kweku Moses
+# Pomodoro Taskmanager
+
+A Wordpress/Woocommerce custom theme.
+
+## Description 📝
+
+Starter template by https://underscores.me/.
+This theme was built using
+
+    - Advanced Custom Fields
+    - Tachyons
+    - Gsap
+    - Stripe
+
+## Current status 💭
+
+<span style="color:blue">Done</span>
+
+## Authors 👤
+
+Kweku Moses
+
+## View Live Project 💫
+
+https://woocommerce-660932-2402169.cloudwaysapps.com/
